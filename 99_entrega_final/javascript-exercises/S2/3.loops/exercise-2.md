@@ -6,4 +6,10 @@ const alien = {
     planet: 'Eden',
     weight: '259kg'
 }
+
+for (const key in alien) {
+  if (alien.hasOwnProperty(key)) {
+    console.log(key + ': ' + alien[key]);
+  }
+}
 ```
