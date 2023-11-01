@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises-5</title>
+</head>
+
+<body>
+    <h6>Basandote en el siguiente html, inserta en el h2 con la clase .fn-insert-here el texto 'Wubba Lubba dub dub'.</h6>
+    
+    <h2 class="fn-insert-here"></h2>
+
+    <script>
+        let itemH2 =document.querySelector('.fn-insert-here'); // creación variable 
+        if (itemH2) {                                          // Comprobacion si existe la Clase donde insertar texto
+            itemH2.textContent ='Wubba Lubba dub dub';         //Insertamos el texto
+        } else {
+            console.log ('No se encontró el elemento h2 con la clase .fn-insert-here'); // si no existe la clase se lanza mensaje
+        }
+    </script>
+</body>
+</html>

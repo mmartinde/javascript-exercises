@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises-6</title>
+</head>
+
+<body>
+    <h6>
+        Basandote en el siguiente array crea una lista ul > li con los textos del array y metelo en el html.
+    </h6>
+
+    <script>
+        let ulItem = document.createElement('ul');
+        document.body.appendChild(ulItem);
+        ulItem.classList.add('list');
+
+        const apps = ['Facebook', 'Netflix', 'Instagram', 'Snapchat', 'Twitter'];
+
+        const listApps = document.getElementsByClassName('list');
+
+        if (listApps) {
+            apps.forEach(app => {
+                let liItem = document.createElement('li');
+                liItem.textContent = app;
+                ulItem.appendChild(liItem);
+                //console.log (liItem);
+            });
+        } else {
+            console.log('Elemento <ul> no encontrado')
+        }      </script>
+</body>
+
+</html>
