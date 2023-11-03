@@ -1,20 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercises-7</title>
 </head>
+
 <body>
     <h6>Basandote en el siguiente html, elimina todos los nodos que tengan la clase .fn-remove-me</h6>
-   <p class="fn-remove-me">Eliminame!</p>
-   <p>No me elimines!</p>
-   <p>No me elimines!</p>
-   <p class="fn-remove-me">Eliminame!</p>
-   <p>No me elimines!</p>
-   <p class="fn-remove-me">Eliminame!</p>
-   <p class="fn-remove-me">Eliminame!</p>
-   <p>No me elimines!</p>
+    <p class="fn-remove-me">Eliminame!</p>
+    <p>No me elimines!</p>
+    <p>No me elimines!</p>
+    <p class="fn-remove-me">Eliminame!</p>
+    <p>No me elimines!</p>
+    <p class="fn-remove-me">Eliminame!</p>
+    <p class="fn-remove-me">Eliminame!</p>
+    <p>No me elimines!</p>
+    <script>
+        const pItem = document.body.querySelectorAll('.fn-remove-me');
+        console.log(pItem);
+        pItem.forEach (element => {
+            document.body.removeChild(element);
+        });
+    </script>
 </body>
+
 </html>

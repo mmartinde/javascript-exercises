@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.events.extra.exercise-01</title>
+</head>
+
+<body>
+    <h6>Basandote en el array siguiente, crea una lista ul > li dinámicamente en el html que imprima cada uno de los
+        paises.</h6>
+
+    <script>
+        const countries = ['Japón', 'Nicaragua', 'Suiza', 'Australia', 'Venezuela'];
+
+        let luNewItem =document.createElement('lu');
+        document.body.appendChild (luNewItem);
+        for (const destino of countries) {
+            let liNewItem = document.createElement('li');
+            liNewItem.innerText = destino;
+            luNewItem.appendChild(liNewItem);
+        }
+    </script>
+</body>
+
+</html>

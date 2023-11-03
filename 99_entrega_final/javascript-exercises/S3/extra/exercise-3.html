@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.events.extra.exercise-03</title>
+</head>
+<body>
+    <h6>Dado el siguiente html y javascript. 
+        Utiliza el array para crear dinamicamente una lista ul > li de elementos
+        en el div de html con el atributo data-function="printHere".</h6>
+    <div data-function="printHere"></div>
+    <script>
+        const cars = ['Mazda 6', 'Ford fiesta', 'Audi A4', 'Toyota corola'];
+        
+        //get to div where print to list
+        const printHere = document.querySelector('div[data-function="printHere"]');
+
+        //make a ul item
+        let ulItem =document.createElement('ul');
+
+        //iteration over the array of cars
+        for (const car of cars) {
+            //For each car we create a li element
+            let liItem = document.createElement('li');
+            //assign the name of the car as content of the li
+            liItem.innerText = car;
+            //add the li to the ul
+            ulItem.appendChild(liItem);
+        }
+        //Finally, add the ul to the div
+        printHere.appendChild (ulItem);
+    </script>
+</body>
+</html>
+
+

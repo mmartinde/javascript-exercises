@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercises-3</title>
+</head>
+
+<body>
+  <h6>Basandote en el siguiente html, añade un evento 'input' que ejecute un console.log con el valor del input.</h6>
+  <input type="text" />
+
+  <script>
+    document.querySelector("input").addEventListener("input", function () {
+      console.log(document.getElementsByTagName("input").value);
+    });
+
+  </script>
+</body>
+
+</html>

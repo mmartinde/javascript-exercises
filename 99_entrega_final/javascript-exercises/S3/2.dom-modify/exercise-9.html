@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises-9</title>
+</head>
+
+<body>
+    <h6>Basandote en el siguiente html y javascript,inserta p con el texto 'Voy dentro!', dentro de todos los div con la
+        clase .fn-insert-here</h6>
+    <div class="fn-insert-here"></div>
+    <div></div>
+    <div class="fn-insert-here"></div>
+    <div>Aqui no va un p</div>
+    <script>
+        const nodesList = document.querySelectorAll('.fn-insert-here'); //make a list of elments with class .fn-insert-here
+
+        //get through the entire the nodeList and insert the <p> element created before inside of the node
+        nodesList.forEach(node => {
+            const newP = document.createElement('p'); //create a new <p> element
+            newP.textContent = 'Voy dentro!'; //insert a text in the <p> element 
+            node.appendChild(newP); //insert the <p> element in the node
+        });
+    </script>
+</body>
+
+</html>

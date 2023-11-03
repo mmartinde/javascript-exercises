@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.events.extra.exercise-04a</title>
+</head>
+
+<body>
+    <h6>Dado el siguiente array de objetos.
+        Crea dinamicamente en el html una lista de div que contenga un elemento h4 para el titulo y otro elemento img
+        para la imagen.
+    </h6>
+
+    <script>
+        const countries = [
+            { title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=1' },
+            { title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=2' },
+            { title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=3' },
+            { title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=4' },
+            { title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=5' }];
+
+        /*  draw the cards with the images and a text*/
+        countries.forEach(country => {
+           
+            /*  create a variable and assign it a new <di> tag that will be inside the <container> tag.*/
+            let countryNode = document.createElement('div');
+
+            /* going to assign a class name to the <div> tag created in the previous step*/
+            countryNode.className = 'country';
+
+            /* create an HTML image tag inside the container tag*/
+            let imgNode = document.createElement('img')
+
+            /* insert the image inside the card */
+            imgNode.setAttribute('src', country.imgUrl);
+            countryNode.appendChild(imgNode);
+
+            /* Let's give a title to the image with */
+            let textNode = document.createElement('p');
+
+            /* assign the title*/
+            textNode.innerHTML = (country.title);
+
+            /* introduce this title to the letter */
+            countryNode.appendChild(textNode);
+
+            document.body.appendChild(countryNode);
+
+        });
+    </script>
+</body>
+
+</html>
