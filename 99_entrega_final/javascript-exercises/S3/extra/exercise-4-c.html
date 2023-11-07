@@ -51,42 +51,30 @@
             document.body.appendChild(button);
 
             function handleClick() {
-                const buttonClick = button.getAttribute ('class');
+                const buttonClick = button.getAttribute('class');
                 let buttonsList = document.querySelectorAll('button');
-                
-                   
-                //console.log (buttonList);
+
+
                 if (buttonClick === buttonsList[0].className) {
-                    let div= document.querySelector('.country0');
+                    let div = document.querySelector('.country0');
                     div.remove()
-                 } else if (buttonClick === buttonsList[1].className){
-                    let div= document.querySelector('.country1');
+                } else if (buttonClick === buttonsList[1].className) {
+                    let div = document.querySelector('.country1');
                     div.remove();
-                 } else if (buttonClick === buttonsList[2].className){
-                    let div= document.querySelector('.country2');
+                } else if (buttonClick === buttonsList[2].className) {
+                    let div = document.querySelector('.country2');
                     div.remove()
-                 } else if (buttonClick === buttonsList[3].className){
-                    let div= document.querySelector('.country3');
+                } else if (buttonClick === buttonsList[3].className) {
+                    let div = document.querySelector('.country3');
                     div.remove()
-                 } else {
-                    let div= document.querySelector('.country4');
+                } else {
+                    let div = document.querySelector('.country4');
                     div.remove()
-                 }
+                }
             }
-            
+
             button.addEventListener('click', handleClick);
         });
-
-
-
-
-
-        /* button.addEventListener("click", function () {
-            console.log ('hola');
-            if (lista.lastElementChild) {
-                lista.removeChild(lista.lastElementChild);
-            } 
-        }); */
     </script>
 </body>
 
