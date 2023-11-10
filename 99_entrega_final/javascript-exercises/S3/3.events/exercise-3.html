@@ -12,8 +12,8 @@
   <input type="text" />
 
   <script>
-    document.querySelector("input").addEventListener("input", function () {
-      console.log(document.getElementsByTagName("input").value);
+    document.querySelector("input").addEventListener('input', function(e) {
+      console.log(e.target.value);
     });
 
   </script>
