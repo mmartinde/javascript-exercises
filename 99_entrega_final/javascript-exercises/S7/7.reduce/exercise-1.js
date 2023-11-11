@@ -1,6 +1,6 @@
-Dado el siguiente array, haz la media de las notas de todos los examenes .reduce().
+//Dado el siguiente array, haz una suma de todos las notas de los examenes de los alumnos usando la función .reduce().
 
-```js
+
 const exams = [
     {name: 'Abel Cabeza Román', score: 5}, 
     {name: 'Maria Aranda Jimenez', score: 1}, 
@@ -13,4 +13,8 @@ const exams = [
     {name: 'Robert Kiyosaki', score: 2},
     {name: 'Keanu Reeves', score: 10}
 ];
-```
+
+let totalScore = exams.reduce(function (accumulator, exam) { 
+    return accumulator + exam.score;}, 0);
+
+console.log(totalScore);
