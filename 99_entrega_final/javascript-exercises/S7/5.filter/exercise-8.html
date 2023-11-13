@@ -26,13 +26,16 @@
       { name: 'AuronPlay', age: 33, gameMorePlayed: 'Among Us' }
     ];
 
-    document.querySelector("input").addEventListener('input', function (e) {
+   
+  const prueba = document.querySelector("input").addEventListener('input', function (e) {
       var inputValue = e.target.value;
       const filterStreamers = streamers.filter(streamer => streamer.name.includes(inputValue));
       console.log(filterStreamers);
     });
+  
 
-    //document.querySelector("button").addEventListener ('click',)
+    const print = document.querySelector("button").addEventListener ('click',prueba);
+    console.log (prueba);
   </script>
 </body>
 
