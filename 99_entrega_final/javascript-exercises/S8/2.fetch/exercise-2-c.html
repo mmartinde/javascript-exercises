@@ -1,0 +1,54 @@
+<!-- En base al ejercicio anterior, crea un botón con el texto 'X' para cada uno de los p que hayas insertado y que si el usuario hace click en este botón eliminemos el parrafo asociado. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.fetch -> exercise-2-c</title>
+</head>
+
+<body>
+    <input type="text">
+    <button>Consultar</button>
+    <div class="results"></div>
+    <script>
+
+
+
+        var num = 123213452134.555555
+        var format = num.toLocaleString('es-ES', { maximumFractionDigits: 2 });
+
+        console.log(format);
+        // Escucha el evento 'submit' y pasa el name introducido para imprimir
+        document.querySelector('button').addEventListener('click', function () {
+            const name = document.querySelector('input').value;
+            const baseUrl = `https://api.nationalize.io?name=${name}`;
+
+            fetch(baseUrl)
+                .then((response) => response.json())
+                .then(data => {
+                    const resultsDiv = document.querySelector('.results');
+                    resultsDiv.innerHTML = '';
+                    data.country.forEach(element => {
+                        const p = document.createElement('p');
+                        const btn = document.createElement('button');
+                        btn.textContent='X';
+                        btn.addEventListener('click', function(){
+                            this.parentElement.remove();
+                        });
+                        let numeroFormateado = (element.probability * 100).toFixed (2).replace('.',',') ;
+                        p.textContent = `El nombre ${name} tiene un ${numeroFormateado} porciento de ser de ${element.country_id}`;
+                        p.appendChild(btn);
+                        resultsDiv.appendChild(p);
+                    });
+                })
+                .catch(error => console.error(error));
+        });
+
+
+    </script>
+</body>
+
+</html>

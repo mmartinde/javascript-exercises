@@ -1,0 +1,30 @@
+<!-- Convierte la siguiente promesa para esperar a ejecutar el console usando async-await. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.async-await -> exercise-1</title>
+</head>
+
+<body>
+    <script>
+        const runTimeOut = async () => {
+            const promise = new Promise((resolve) => {
+                setTimeout(function () {
+                    resolve();
+                }, 2000);
+            })
+
+            //promise.then(() => { console.log('Time out!') })
+            await promise;
+            console.log ('Time out!');
+        };
+
+        runTimeOut();
+
+    </script>
+</body>
+
+</html>

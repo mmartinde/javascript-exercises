@@ -1,0 +1,36 @@
+<!-- Dado el siguiente javascript y html. 
+    Añade la funcionalidad necesaria usando fetch() para hacer una consulta a la api cuando se haga click en el botón,
+    pasando como parametro de la api, el name del input. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.fetch -> exercise-2-a</title>
+</head>
+
+<body>
+    <input type="text">
+    <button>Consultar</button>
+    <script>
+
+
+
+        // Escucha el evento 'submit' y pasa el name introducido para imprimir
+        document.querySelector('button').addEventListener('click', function () {
+            const name = document.querySelector('input').value;
+            const baseUrl = `https://api.nationalize.io?name=${name}`;
+
+            fetch(baseUrl)
+                .then((response) => response.json())
+                .then((json) => console.log(json))
+                .then(data => console.log(data))
+                .catch(error => console.error(error));
+        });
+
+
+    </script>
+</body>
+
+</html>
