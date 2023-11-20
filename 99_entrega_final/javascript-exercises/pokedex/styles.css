@@ -1,47 +1,222 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --clr-black: #1c1c1c;
+    --clr-gray: #ececec;
+    --clr-white: #f7f7f7;
+
+    --type-normal: #A8A878;
+    --type-fire: #F08030;
+    --type-water: #6890f0;
+    --type-grass: #78C850;
+
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: var(--clr-black);
+    color: var (--clr-black);
     font-family: 'Rubik', sans-serif;
 }
 
-body{
-    font-family:'Rubik', normal ;
-    font-size: 20px;
+ul {
+    list-style-type: none;
 }
 
+body {
+    min-height: 100vh;
+    background-color: var(--clr-gray);
+    margin: 0;
+    font-family: rubik;
+    color: white;
+}
+
+header{
+    padding-block: 1rem;
+    box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, .5);
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1 rem;
+    align-items: flex-start;
+    padding-inline: 1rem;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    
+}
 
 main{
     padding: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
+}
 
+.pokedex-img {
+    padding-inline: 1rem;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: center;
 }
 
-div .pokemon{
+.pokedex-img img {
+    width: 100%;
+    max-width: 20rem;
+}
+
+#pokedex{
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    width: 400px;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+}
+.pokemon {
+    border-radius: 1rem;
+    background-color: var(--clr-white);
+    box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, .25);
+    padding-block: 1rem;
+    text-transform: capitalize;
+    color: var(--clr-black);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+.pokemon-id-bck{
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6rem;
+    font-weight: 800;
+    color: var(--clr-gray);
+    z-index: -1;
 }
 
-h2{
-    font-size: 25px;
+.pokemon-img{
+    padding-inline: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.pokemon-img img{
+    width: 100%;
+    max-width: 6rem;
+}
+
+.pokemon-inf{
+display: flex;
+flex-direction: column;
+gap: .5rem;
+padding-inline: 1rem;
+align-items: center;
+text-align: center;
+}
+
+.pokemon-name{
+    display: flex;
     align-items: center;
+    column-gap: .5rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-img{
-    object-fit: cover;
-    object-position: top;
-    width: 65%;
-    height: 260px;
+.pokemon-id{
+    background-color: var(--clr-gray);
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: .75rem;
+    font-weight: 500;
+}
 
+.name{
+    font-size: 1.4rem;
+}
+
+.pokemon-typ{
+    display: flex;
+    gap: .5rem;
+    font-size: .75rem;
+    font-weight: 500;
+    flex-wrap: warp;
+    justify-content: center;
+}
+
+.type {
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+}
+
+.pokemon-stats{
+    display: flex;
+    gap: 1rem;
+    font-size: .85rem;
+}
+
+.stat {
+    background-color: var(--clr-gray);
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+
+}
+
+
+
+
+
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 54px;
+    color: var (--clr-black);
+}
+
+
+
+/* #pokedex {
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 20px;
+} */
+
+.pokemon:hover {
+    animation: bounce 0.5s linear;
+}
+
+@keyframes bounce {
+    20% {
+        transform: translateY(-6px);
+    }
+
+    40% {
+        transform: translateY(0px);
+    }
+
+    60% {
+        transform: translateY(-2px);
+    }
+
+    80% {
+        transform: translateY(-0px);
+    }
+}
+
+.normal {
+    background-color: var (--type-normal);
+    color: var (--clr-black);
+}
+.fire {
+    background-color: var (--type-fire);
+    color: var (--clr-black);
+}
+.water {
+    background-color: var (--type-water);
+    color: var (--clr-white);
+}
+.grass {
+    background-color: var (--type-grass);
+    color: var (--clr-black);
 }
