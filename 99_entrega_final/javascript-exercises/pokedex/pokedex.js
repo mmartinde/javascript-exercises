@@ -1,17 +1,27 @@
 const myMain$$ = document.querySelector("#pokedex");
 
+/*
+  This asynchronous function fetchPokemons makes a request to the Pokémon API
+  to retrieve data about Pokémon. It takes an optional "limit" parameter that
+  specifies the number of Pokémon to fetch. If not provided, the default limit is 150.
+
+  @param {number} limit - The limit of Pokémon to retrieve (optional).
+  @returns {Map} - A map containing Pokémon data, where the key is the Pokémon number and the value is the Pokémon information.
+*/
 const fetchPokemons = async (limit = 150) => {
   try {
+    // Create a new map to store Pokémon data
     const pokemonMap = new Map();
 
+    // Iterate through the specified limit and make requests to get Pokémon data
     for (let i = 0; i < limit; i++) {
       const response = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${i + 1}/`
       );
       const pokemonData = await response.json();
-      //console.log (pokemonData);
+
+      // Store Pokémon data in the map with the key being the Pokémon number
       pokemonMap.set(i + 1, pokemonData);
-      //pokemonMap.set(i , pokemonData.name);
     }
     return pokemonMap;
   } catch (error) {
@@ -19,64 +29,73 @@ const fetchPokemons = async (limit = 150) => {
   }
 };
 
+/*
+  This function drawPokemons renders Pokémon cards based on the provided data.
+  It creates an HTML structure for each Pokémon and appends it to the main container.
+
+  @param {Map} mappedPokemons - A map containing Pokémon data, where the key is the Pokémon number and the value is the Pokémon information.
+*/
 const drawPokemons = (mappedPokemons) => {
   myMain$$.innerHTML = "";
   for (const character of mappedPokemons) {
-    //console.log(character[1].sprites.other.home.front_default);
     const divCards$$ = document.createElement("li");
-
     let pokeId = character[1].id.toString();
     if (pokeId.length === 1) {
       pokeId = "00" + pokeId;
     } else if (pokeId.length === 2) {
       pokeId = "0" + pokeId;
     }
+    const type =
+      (character[1].types[0] && character[1].types[0].type.name) || "";
+    const type2 =
+      (character[1].types[1] && character[1].types[1].type.name) || "";
+    const imgSrc = character[1].sprites.other.home.front_default;
+    const shinyImgSrc = character[1].sprites.other.home.front_shiny;
+
     divCards$$.innerHTML = `
-        <div class="pokemon">
-          <p class="pokemon-id-bck">#${pokeId}</p>
-          <div class="pokemon-img">
-          <img src="${character[1].sprites.other.home.front_default}" alt="${character[1].name}">
-          </div>
+    <div class="pokemon ${type}">
+    <p class="pokemon-id-bck">#${pokeId}</p>
+    <div class="pokemon-img">
+    <img src="${imgSrc}" alt="${character[1].name}" onmouseover="changeImage(this, '${shinyImgSrc}')"
+    onmouseout="changeImage(this, '${imgSrc}')">
+    </div>
           <div class="pokemon-inf">
-            <div class="pokemon-name">
-              <p class="pokemon-id">#${pokeId}</p>
-              <h2 class="name">${character[1].name}</h2>
-            </div>
-            <div class="pokemon-typ">
-              <p class="${character[1].types[0].type.name} type">${character[1].types[0].type.name}</p>
-              <p class="type">${character[1].abilities[0].ability.name}</p>
-            </div>
-            <div class="pokemon-stats">
+          <div class="pokemon-name">
+          <p class="pokemon-id">#${pokeId}</p>
+          <h2 class="name">${character[1].name}</h2>
+          </div>
+          <div class="pokemon-typ">
+          <p class="${type} type">${type}</p>
+          <p class="${type2} type">${type2}</p>
+              </div>
+              <div class="pokemon-stats">
               <p class="stat">${character[1].height}M</p>
               <p class="stat">${character[1].weight}KG</p>
               <p class="stat">${character[1].base_experience}HP</p>
-            </div>
-          </div>
-        </div>
-   `;
-    //<p class="ability02">${character[1].abilities[1].ability.name}</p>
-    //console.log(character[1].order);
+              </div>
+              </div>
+              </div>
+              `;
     myMain$$.appendChild(divCards$$);
   }
-
-  /*  console.log ("mapa",getPokemonsWithoutMap);
-  console.log ("mapeando nombre:",getPokemonsWithoutMap.get(1).name);
-  console.log ("mapeando id:",getPokemonsWithoutMap.get(1).id);
-  console.log ("mapeando imagen:",getPokemonsWithoutMap.get(1).sprites.front_default);
-  console.log ("mapeando tipo 1:",getPokemonsWithoutMap.get(1).types[0].type.name);
-  console.log ("mapeando habilidad 1:",getPokemonsWithoutMap.get(1).abilities[0].ability.name);
-  console.log ("mapeando tipo 2:",getPokemonsWithoutMap.get(1).types[1].type.name);
-  console.log ("mapeando habilidad 2:",getPokemonsWithoutMap.get(1).abilities[1].ability.name);
-  console.log ("mapeando weight:",getPokemonsWithoutMap.get(1).weight);
-  console.log ("mapeando height:",getPokemonsWithoutMap.get(1).height); */
-
-  //id: character.get(element).id,
-  //imagen: character.get(element).sprites.front_default,
-  //tipo: character.types[0].type.name,
-
-  //console.log("funcion map",mappedPokemons);
 };
 
+/*
+  This function changeImage is a helper function that changes the source of an image element.
+
+  @param {HTMLImageElement} element - The image element to change.
+  @param {string} newSrc - The new source for the image.
+*/
+function changeImage(element, newSrc) {
+  element.src = newSrc;
+};
+
+/*
+  This function drawInputSearch sets up an event listener for the input element to trigger
+  the searchPokemon function when the input value changes.
+
+  @param {Map} characters - A map containing Pokémon data, where the key is the Pokémon number and the value is the Pokémon information.
+*/
 const drawInputSearch = (characters) => {
   const input$$ = document.querySelector("input");
   input$$.addEventListener("input", () =>
@@ -84,24 +103,34 @@ const drawInputSearch = (characters) => {
   );
 };
 
-const searchPokemon = (characters, filtro) => {
-  console.log("filtro", filtro);
+/*
+  This function searchPokemon filters Pokémon based on the provided filter text and renders the filtered Pokémon.
+
+  @param {Map} characters - A map containing Pokémon data, where the key is the Pokémon number and the value is the Pokémon information.
+  @param {string} filter - The filter text to search for in Pokémon names.
+*/
+const searchPokemon = (characters, filter) => {
   const characterArray = Array.from(characters.entries());
-  let filteredCharacter = characterArray.filter(([clave, character]) =>
-    character.name.toLowerCase().includes(filtro.toLowerCase())
-  );
+  let filteredCharacter = characterArray.filter(([key, character]) =>
+    character.name.toLowerCase().includes(filter.toLowerCase())
+    );
   drawPokemons(filteredCharacter);
 };
 
+/*
+  This function init is the entry point of the application. It fetches Pokémon data, draws the initial Pokémon cards,
+  and sets up the input search functionality.
+
+
+  @returns {Promise<void>} - A promise that resolves when the initialization is complete.
+*/
 const init = async () => {
-  const pokemons = await fetchPokemons(); //get info without map
-  //console.log (pokemons);
-
+  const pokemons = await fetchPokemons();
+  
   const drawPokemon = drawPokemons(pokemons);
-
-  //const mappedPokemons = mapPokemons (pokemons);
 
   drawInputSearch(pokemons);
 };
 
+// Call the init function to start the application
 init();
