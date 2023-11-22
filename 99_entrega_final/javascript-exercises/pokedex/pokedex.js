@@ -107,13 +107,26 @@ const drawInputSearch = (characters) => {
   This function searchPokemon filters Pokémon based on the provided filter text and renders the filtered Pokémon.
 
   @param {Map} characters - A map containing Pokémon data, where the key is the Pokémon number and the value is the Pokémon information.
-  @param {string} filter - The filter text to search for in Pokémon names.
+  @param {string} filter - The filter text to search for in Pokémon names or types.
 */
 const searchPokemon = (characters, filter) => {
   const characterArray = Array.from(characters.entries());
-  let filteredCharacter = characterArray.filter(([key, character]) =>
-    character.name.toLowerCase().includes(filter.toLowerCase())
+  let filteredCharacter;
+
+  // check if filtee include "type:"
+  if (filter.toLowerCase().startsWith("type:")) {
+    const searchType = filter.substring(5).toLowerCase();
+    filteredCharacter = characterArray.filter(([key, character]) =>
+      (character.types[0] && character.types[0].type.name.toLowerCase() === searchType) ||
+      (character.types[1] && character.types[1].type.name.toLowerCase() === searchType)
     );
+  } else {
+    // Filter by nombre
+    filteredCharacter = characterArray.filter(([key, character]) =>
+      character.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  }
+
   drawPokemons(filteredCharacter);
 };
 
