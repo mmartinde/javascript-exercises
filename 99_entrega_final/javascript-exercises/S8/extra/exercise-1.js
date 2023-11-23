@@ -11,10 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             // Iterate through the characters and create a card for each
-            data.results.forEach(character => {
+            console.log (data[0]);
+            
+            /* data.results.forEach(character => {
                 const card = createCharacterCard(character);
                 gallery.appendChild(card);
-            });
+            }); */
         })
         .catch(error => console.error("Error fetching data:", error));
 

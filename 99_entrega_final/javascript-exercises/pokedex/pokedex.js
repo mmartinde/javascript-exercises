@@ -113,7 +113,7 @@ const searchPokemon = (characters, filter) => {
   const characterArray = Array.from(characters.entries());
   let filteredCharacter;
 
-  // check if filter include "type:"
+  // check if filtee include "type:"
   if (filter.toLowerCase().startsWith("type:")) {
     const searchType = filter.substring(5).toLowerCase();
     filteredCharacter = characterArray.filter(([key, character]) =>
