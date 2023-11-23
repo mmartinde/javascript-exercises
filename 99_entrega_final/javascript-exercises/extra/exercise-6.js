@@ -1,12 +1,12 @@
-Al siguiente javascript no funciona como deberia...podrias arreglarlo?
+//Al siguiente javascript no funciona como deberia...podrias arreglarlo?
 
-Deberia de imprimir por consola "Abel".
+//Deberia de imprimir por consola "Abel".
 
-```js
+
 const user = {name: "Abel", surname: "Cabeza"}
 
 function a(user){
-    const nama = b(user.nama);
+    const nama = b(user.name);
     console.log(nama)
 }
 
@@ -15,4 +15,3 @@ function b(name){
 }
 
 a(user);
-```
